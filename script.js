@@ -1,8 +1,3 @@
-// Force HTTPS redirection (skip for localhost)
-if (window.location.protocol === 'http:' && window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1') {
-    window.location.href = 'https://' + window.location.host + window.location.pathname + window.location.search + window.location.hash;
-}
-
 document.addEventListener('DOMContentLoaded', () => {
     // Header Scroll Effect
     const header = document.getElementById('header');
