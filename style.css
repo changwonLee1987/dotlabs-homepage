@@ -384,6 +384,70 @@ nav a:hover, nav a.active {
     margin-bottom: 0;
 }
 
+/* Contact Form */
+.contact-form-wrapper {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 4rem;
+}
+
+.form-row {
+    display: flex;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.form-row .form-group {
+    flex: 1;
+    margin-bottom: 0;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+    text-align: left;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.8rem;
+    font-size: 1.05rem;
+    color: var(--text-muted);
+    font-weight: 600;
+}
+
+.form-group input,
+.form-group textarea {
+    display: block;
+    width: 100%;
+    padding: 1.25rem 1.5rem;
+    background: rgba(15, 23, 42, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    color: #fff;
+    font-family: var(--font-sans);
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+}
+
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--accent-blue);
+    background: rgba(15, 23, 42, 0.8);
+    box-shadow: 0 0 10px rgba(0, 229, 255, 0.2);
+}
+
+.contact-form .submit-btn {
+    margin-top: 1rem;
+    width: 100%;
+    cursor: pointer;
+    font-size: 1.1rem;
+    padding: 1.2rem;
+}
+
+.mt-4 { margin-top: 2rem; }
+
 /* Why Us / Closing */
 .relative { position: relative; }
 .view-border {
@@ -489,6 +553,9 @@ nav a:hover, nav a.active {
     .hero h1 { font-size: 2.2rem; }
     nav { display: none; }
     .view-border { padding: 2rem; }
+    .contact-form-wrapper { padding: 2rem 1.5rem; }
+    .form-row { flex-direction: column; gap: 0; margin-bottom: 0; }
+    .form-row .form-group { margin-bottom: 1.5rem; }
     .flex-footer { flex-direction: column; text-align: center; gap: 1.5rem; }
     .footer-contact { text-align: center; }
 }
