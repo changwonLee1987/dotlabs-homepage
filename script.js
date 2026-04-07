@@ -31,11 +31,12 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Mobile Menu Toggle (placeholder)
+    const mobileMenu = document.querySelector('.mobile-menu');
     const hamburger = document.querySelector('.hamburger');
     const nav = document.querySelector('nav');
     
-    if (hamburger) {
-        hamburger.addEventListener('click', () => {
+    if (mobileMenu && hamburger) {
+        mobileMenu.addEventListener('click', () => {
             hamburger.classList.toggle('active');
             nav.classList.toggle('active');
         });

@@ -130,7 +130,10 @@ nav a.active {
     cursor: pointer;
     z-index: 1001;
     position: relative;
-    padding: 0.5rem;
+    width: 40px;
+    height: 40px;
+    align-items: center;
+    justify-content: center;
 }
 
 .hamburger {
@@ -649,7 +652,7 @@ nav a.active {
     }
 
     .mobile-menu {
-        display: block;
+        display: flex;
     }
 
     nav {
