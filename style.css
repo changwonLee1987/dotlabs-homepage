@@ -960,3 +960,6 @@ nav a { white-space: nowrap; }
     .stat-grid { grid-template-columns: 1fr 1fr; gap: 0.75rem; }
     .tech-part .stat-value { font-size: 1.5rem; }
 }
+
+/* 한글이 음절 중간("기/업입니다", "다/대다")에서 끊기지 않게 — 모든 화면 폭에 적용 */
+body { word-break: keep-all; overflow-wrap: anywhere; }
