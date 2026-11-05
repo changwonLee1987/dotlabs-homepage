@@ -78,7 +78,9 @@
                 <div class="subtitle-wrap text-center">
                     <h3 class="section-subtitle">Gbus — Brokerless Message Bus</h3>
                 </div>
-                <div class="vision-content glass text-center">
+                <div class="grid tech-split">
+                    <div class="tech-col">
+                <div class="vision-content glass text-center tech-desc">
                     <p class="desc">
                         Gbus는 여러 프로세스가 데이터를 공유하고 교환할 수 있도록 Pub/Sub을 지원하는 메시지 버스입니다.<br>
                         <strong>중앙에서 메시지를 중계하지 않고 프로세스 사이를 직접 연결합니다.</strong><br>
@@ -100,8 +102,10 @@
                     </table>
                 </div>
 
-                <div class="glass mt-4 table-box">
-                    <table class="data-table">
+                    </div>
+                    <div class="tech-col">
+                <div class="glass table-box">
+                    <table class="data-table transport-table">
                         <thead>
                             <tr><th>구분</th><th>전송 방식</th><th>용도</th></tr>
                         </thead>
@@ -115,6 +119,8 @@
                             <tr><th>UDP</th><td>자체 Reliable UDP</td><td>서버 간 고성능 · 신뢰 모드 4종</td></tr>
                         </tbody>
                     </table>
+                </div>
+                    </div>
                 </div>
 
                 <div class="grid grid-4 mt-4">
@@ -227,10 +233,7 @@
         <section id="direction" class="competencies section-padding observer-target">
             <div class="container">
                 <h2 class="section-title text-center">Our <span>Direction</span></h2>
-                <div class="subtitle-wrap text-center">
-                    <h3 class="section-subtitle">시스템 프로그램 개발 역량을 바탕으로 금융 실시간 처리 영역을 확장합니다</h3>
-                </div>
-                <div class="grid grid-2">
+                <div class="grid grid-4 direction-grid">
                     <div class="feature-card">
                         <div class="feature-content">
                             <div class="feature-number">01</div>
@@ -268,6 +271,13 @@
                         </div>
                     </div>
                 </div>
+                <!-- 맺음말(소개서 7쪽) — 예전엔 맨 아래 별도 섹션이었다 -->
+                <div class="view-border closing-band text-center">
+                    <div class="message-box closing-box mt-0">
+                        <span class="closing-brand">도트랩스는</span> 시스템 프로그램 개발 역량을 바탕으로<br>
+                        <strong>금융 실시간 처리 영역을 확장합니다.</strong>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -300,7 +310,7 @@
                         </div>
                         <div class="form-group">
                             <label for="message">Message</label>
-                            <textarea id="message" name="message" rows="5" required
+                            <textarea id="message" name="message" rows="4" required
                                 placeholder="How can we help you?"></textarea>
                         </div>
                         <div class="text-center mt-4">
@@ -311,16 +321,6 @@
             </div>
         </section>
 
-        <!-- Closing Statement -->
-        <section id="closing" class="why-us section-padding observer-target">
-            <div class="container relative view-border text-center">
-                <div class="glow-bg"></div>
-                <div class="message-box closing-box mt-0">
-                    <span class="closing-brand">도트랩스는</span> 시스템 프로그램 개발 역량을 바탕으로<br>
-                    <strong>금융 실시간 처리 영역을 확장합니다.</strong>
-                </div>
-            </div>
-        </section>
     </main>
 
     <footer class="footer">

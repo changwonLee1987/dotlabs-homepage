@@ -773,3 +773,124 @@ nav a.active {
     .stat-card { padding: 1.5rem 0.75rem; }
     .block-gap { margin-top: 4rem; }
 }
+
+/*
+ * 메뉴별 화면 전환 (2026-11-05)
+ * script.js 가 html 에 .views-on 을 붙이면 main 의 섹션 중 .is-active 하나만 보인다.
+ * 스크립트가 안 돌면 이 블록은 아무 일도 하지 않아 예전 한 페이지 그대로다.
+ * 각 화면은 "헤더 아래 남은 높이" 안에 내용을 세로 가운데로 놓는다.
+ * 내용이 그보다 길면(Core Technology) 그 화면 안에서만 아래로 스크롤된다.
+ * --header-h 는 script.js 가 고정 헤더 높이를 재서 넣는다(기본 220px).
+ */
+.views-on main > section:not(.is-active) { display: none; }
+
+.views-on main > section.section-padding.is-active {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 100vh;
+    padding: calc(var(--header-h, 220px) + 1rem) 0 3rem;
+}
+.views-on main > section.section-padding > .container { width: 100%; }
+
+/* 한 화면에 담기 위해 제목·부제 사이 여백만 줄인다(글자 크기·색은 그대로) */
+.views-on .section-title { margin-bottom: 2rem; }
+.views-on .subtitle-wrap { margin-top: -1rem; margin-bottom: 2rem; }
+.views-on .section-lead { margin-bottom: 2rem; }
+.views-on .block-gap { margin-top: 4rem; }
+
+/* Technology: Gbus 설명+비교표 | 전송방식표 를 좌우로 */
+.tech-split { grid-template-columns: 1fr 1.2fr; gap: 2rem; align-items: start; }
+/* 좁아진 칸에서 한글이 음절 중간에 끊기지 않게 */
+.tech-desc .desc,
+.direction-grid .feature-text p { word-break: keep-all; }
+.tech-split .data-table td,
+.tech-split .data-table thead th { white-space: nowrap; }
+/* 용도 칸만 길어서 넘치므로 이 칸만 줄바꿈 허용 */
+.transport-table td:last-child { white-space: normal; word-break: keep-all; }
+.tech-col { min-width: 0; }
+.tech-desc { padding: 2rem; }
+.tech-desc .desc { font-size: 1rem; }
+.tech-split .data-table th,
+.tech-split .data-table td { padding: 0.7rem 0.9rem; }
+
+/* Direction: 네 항목을 한 줄로, 맺음말은 그 아래 */
+.direction-grid .feature-card { padding: 2rem; }
+.closing-band { margin-top: 2.5rem; padding: 2.5rem; }
+.closing-band .closing-box { font-size: 1.6rem; }
+.closing-band .closing-box strong { font-size: 2.2rem; margin-top: 0.5rem; }
+
+/* Contact: 입력란 여백을 줄여 버튼까지 한 화면에 */
+.views-on #contact .view-border { padding: 2.5rem; }
+.views-on .contact-form-wrapper { padding: 2.5rem 3rem; }
+.views-on .form-group label { margin-bottom: 0.5rem; }
+.views-on .form-group input,
+.views-on .form-group textarea { padding: 0.9rem 1.2rem; }
+.views-on .contact-form .submit-btn { margin-top: 0; }
+
+/*
+ * 노트북처럼 세로가 낮은 화면(높이 820px 이하)에서는 로고 180px 헤더가 화면의
+ * 1/3 을 차지해 한 화면 배치가 깨진다. 이때만 로고를 줄인다. 큰 화면은 그대로.
+ */
+@media (max-height: 820px) {
+    .logo-img { height: 110px; }
+    header { padding: 0.75rem 0; }
+}
+
+@media (max-width: 992px) {
+    .tech-split { grid-template-columns: 1fr; }
+    .tech-split .data-table td { white-space: normal; }
+    .direction-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 768px) {
+    .direction-grid { grid-template-columns: 1fr; }
+    .closing-band { padding: 2rem 1.25rem; }
+    .closing-band .closing-box { font-size: 1.2rem; }
+    .closing-band .closing-box strong { font-size: 1.6rem; }
+    .views-on #contact .view-border { padding: 1.5rem; }
+    .views-on .contact-form-wrapper { padding: 1.5rem; }
+}
+
+/*
+ * 모바일(폭 768px 이하) 화면 정리 (2026-11-05)
+ * 메뉴별 화면 전환은 PC 와 같다. 휴대폰 한 화면에 다 들어가진 않으므로
+ * 각 화면 안에서 세로로 읽히게 하고, 자리를 많이 먹는 요소만 줄인다.
+ *  - 로고 180px 헤더가 휴대폰 화면의 1/4 을 덮어 80px 로 줄인다.
+ *  - 한글이 음절 중간("기업입니/다")에서 끊기지 않게 keep-all.
+ *  - 큰 인용문·제목·카드 여백을 휴대폰 폭에 맞춘다.
+ */
+@media (max-width: 768px) {
+    header { padding: 0.5rem 0; }
+    header.scrolled { padding: 0.25rem 0; }
+    .logo-img { height: 100px; }
+    .nav-container { padding: 0 1rem; }
+    .container { padding: 0 1rem; }
+
+    body { word-break: keep-all; }
+    .views-on main > section.section-padding.is-active {
+        justify-content: flex-start;
+        padding: calc(var(--header-h, 100px) + 1rem) 0 2.5rem;
+    }
+    .hero { padding-top: 100px; }
+    .subtitle { font-size: 1.05rem; }
+
+    .section-title { font-size: 1.9rem; }
+    .views-on .section-title { margin-bottom: 1.5rem; }
+    .views-on .subtitle-wrap { margin-top: -0.5rem; margin-bottom: 1.5rem; }
+    .section-subtitle { font-size: 1rem; letter-spacing: 1px; }
+    .section-lead { font-size: 0.98rem; }
+
+    .glass { padding: 1.5rem 1.25rem; }
+    .vision .quote { font-size: 1.45rem; margin-bottom: 1.25rem; }
+    .vision .desc { font-size: 0.98rem; line-height: 1.75; }
+    .feature-card { padding: 1.5rem 1.25rem; }
+    .direction-grid .feature-card { padding: 1.5rem 1.25rem; }
+    .feature-kor { margin-bottom: 1rem; padding-bottom: 0.75rem; }
+    .grid { gap: 1rem; }
+    .tech-desc { padding: 1.5rem 1.25rem; }
+    .closing-band { margin-top: 1.5rem; }
+
+    /* 모바일 메뉴 화면에서 지금 보는 메뉴를 표시 */
+    nav a.active { color: var(--accent-blue); }
+}
