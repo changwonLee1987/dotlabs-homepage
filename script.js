@@ -90,7 +90,8 @@ document.addEventListener('DOMContentLoaded', () => {
         if (window.innerWidth <= 768) return;
         const cs = getComputedStyle(v);
         const footerH = footer ? Math.ceil(footer.getBoundingClientRect().height) : 0;
-        const avail = window.innerHeight - footerH - parseFloat(cs.paddingTop) - parseFloat(cs.paddingBottom);
+        // 4px 여유: zoom 소수점 반올림·서브픽셀 때문에 1~2px 넘쳐 스크롤이 생겼다(Contact, 1180x790 에서 2px)
+        const avail = window.innerHeight - footerH - parseFloat(cs.paddingTop) - parseFloat(cs.paddingBottom) - 4;
         const fullW = v.clientWidth;
         const maxW = parseFloat(getComputedStyle(box).maxWidth) || fullW;
         // zoom 은 폭까지 줄여 표 줄바꿈이 늘고 오히려 길어진다. 그래서 줄인 만큼 폭을
@@ -99,16 +100,18 @@ document.addEventListener('DOMContentLoaded', () => {
         // 높이가 z 에 대해 매끄럽지 않다. 그래서 비례 계산 대신 이분 탐색으로
         // "넘치지 않는 가장 큰 z" 를 찾는다(7회 ≈ 0.002 정밀도).
         const apply = (z) => {
-            box.style.zoom = z === 1 ? '' : z.toFixed(3);
+            // 반올림하면 실제보다 커질 수 있어 내림한다
+            z = z === 1 ? 1 : Math.floor(z * 1000) / 1000;
+            box.style.zoom = z === 1 ? '' : String(z);
             box.style.maxWidth = z === 1 ? '' : (maxW / z) + 'px';
             box.style.width = z === 1 ? '' : (fullW / z) + 'px';
             return box.getBoundingClientRect().height;
         };
-        if (apply(1) <= avail + 1) return;
+        if (apply(1) <= avail) return;
         let lo = MIN_ZOOM, hi = 1;
         for (let i = 0; i < 7; i++) {
             const mid = (lo + hi) / 2;
-            if (apply(mid) <= avail + 1) lo = mid; else hi = mid;
+            if (apply(mid) <= avail) lo = mid; else hi = mid;
         }
         apply(lo);
     };
