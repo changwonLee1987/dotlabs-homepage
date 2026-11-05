@@ -1027,3 +1027,46 @@ header { border-bottom: 1px solid transparent; }
 
 /* 스크롤바가 생기고 없어질 때 화면 폭이 바뀌어 가운데가 흔들리지 않게 자리를 늘 잡아 둔다 */
 html { scrollbar-gutter: stable; }
+
+/*
+ * Technology 배치 (2026-11-05, 아이패드 가로 한 화면)
+ * 표 두 개 + 수치 4개 + 측정 메모를 grid-area 로 폭마다 다르게 놓는다.
+ *  - 1100px 이상: 비교표 | 전송방식표 | 수치 세로 4칸 — 세로 길이가 전송방식표 하나로 준다
+ *  - 769~1099px: 비교표 위·수치 아래(왼쪽) | 전송방식표(오른쪽)
+ *  - 768px 이하: 한 줄로 쌓는다
+ * 화면 높이가 낮으면(820px 이하) 제목 주변 여백도 줄인다.
+ */
+.tech-split {
+    grid-template-columns: 1fr 1.2fr;
+    grid-template-areas: "cmp trn" "st trn";
+    gap: 1rem 1.5rem;
+    align-items: start;
+}
+.tech-cmp { grid-area: cmp; min-width: 0; }
+.tech-trn { grid-area: trn; min-width: 0; }
+.tech-stats { grid-area: st; min-width: 0; }
+.tech-stats .stat-note { margin-top: 0.75rem; font-size: 0.8rem; }
+
+@media (min-width: 1100px) {
+    .tech-split {
+        grid-template-columns: 1fr 1.15fr 0.55fr;
+        grid-template-areas: "cmp trn st";
+    }
+    .tech-stats .stat-grid { grid-template-columns: 1fr; gap: 0.6rem; }
+    .tech-stats .stat-card { padding: 0.8rem 0.75rem; }
+    .tech-stats .stat-value { font-size: 1.7rem; margin-bottom: 0.2rem; }
+    .tech-stats .feature-kor { font-size: 0.85rem; }
+    .tech-stats .stat-note { line-height: 1.6; }
+}
+@media (max-width: 768px) {
+    .tech-split { grid-template-columns: 1fr; grid-template-areas: "cmp" "trn" "st"; }
+}
+@media (min-width: 769px) and (max-height: 820px) {
+    .views-on main > section.section-padding.is-active {
+        padding-top: calc(var(--header-h, 95px) + 1rem);
+        padding-bottom: 1rem;
+    }
+    .views-on .tech-tabs { margin: -1.25rem 0 1rem; }
+    .views-on #technology .subtitle-wrap { margin-top: 0; margin-bottom: 1rem; }
+    .tech-lead { margin-bottom: 1rem; line-height: 1.6; }
+}
