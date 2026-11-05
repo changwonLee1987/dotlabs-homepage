@@ -718,3 +718,58 @@ nav a.active {
         text-align: center;
     }
 }
+/*
+ * 회사소개서 v1.0 내용 반영(2026-11)으로 새로 생긴 요소만 추가한다.
+ * 기존 규칙은 바꾸지 않고, 색·서체·카드 모양은 위의 변수/클래스를 그대로 따른다.
+ *   - 표: Gbus 비교표·전송방식표 (.data-table)
+ *   - 수치: Gbus 처리량, signalAX 레퍼런스 (.stat-value)
+ */
+.text-left { text-align: left; }
+.block-gap { margin-top: 7rem; }
+
+.section-lead {
+    color: var(--text-muted);
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-bottom: 3rem;
+    word-break: keep-all;
+}
+
+.grid-4 { grid-template-columns: repeat(4, 1fr); }
+
+/* 표는 좁은 화면에서 가로 스크롤로 넘긴다(페이지 전체가 밀리지 않도록) */
+.table-box { padding: 1.5rem 2rem; overflow-x: auto; }
+.table-box:hover { transform: none; }
+.data-table { width: 100%; border-collapse: collapse; font-size: 1rem; }
+.data-table th,
+.data-table td { padding: 0.9rem 1rem; text-align: left; border-bottom: 1px solid var(--glass-border); vertical-align: top; }
+.data-table tbody tr:last-child th,
+.data-table tbody tr:last-child td { border-bottom: none; }
+.data-table thead th { color: var(--text-muted); font-size: 0.85rem; font-weight: 600; letter-spacing: 1px; }
+.data-table tbody th { color: #fff; font-weight: 600; white-space: nowrap; }
+.data-table td { color: var(--text-muted); }
+.data-table .hl { color: var(--accent-blue); }
+.data-table tbody td.hl { color: #fff; background: rgba(0, 229, 255, 0.06); }
+
+.stat-card { text-align: center; padding: 2rem 1.5rem; }
+.stat-card .feature-kor { border-bottom: none; padding-bottom: 0; margin-bottom: 0; }
+.stat-value { font-size: 2.4rem; font-weight: 800; color: var(--accent-blue); line-height: 1.2; margin-bottom: 0.5rem; }
+.stat-note { color: var(--text-muted); font-size: 0.9rem; margin-top: 1.5rem; line-height: 1.8; }
+.stat-note strong { color: #fff; font-size: 1.05rem; }
+.ref-stats { margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid var(--glass-border); gap: 1rem; }
+.stat-label { color: var(--text-muted); font-size: 0.9rem; }
+
+@media (max-width: 992px) {
+    .grid-4 { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 768px) {
+    .grid-4 { grid-template-columns: 1fr 1fr; }
+    .ref-stats { grid-template-columns: 1fr 1fr; }
+    .table-box { padding: 1rem; }
+    /* 표는 줄바꿈으로 찌그러뜨리지 않고 가로 스크롤로 본다 */
+    .data-table { min-width: 520px; font-size: 0.92rem; }
+    .stat-value { font-size: 1.7rem; white-space: nowrap; }
+    .stat-card { padding: 1.5rem 0.75rem; }
+    .block-gap { margin-top: 4rem; }
+}

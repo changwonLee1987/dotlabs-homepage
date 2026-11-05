@@ -5,7 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>도트랩스 - Distributed Orchestration</title>
-    <meta name="description" content="금융·증권 IT 솔루션 전문 소프트웨어 기업 도트랩스(DotLabs Co., Ltd.)">
+    <!-- 본문 문구 출처: DotLabs 회사소개서 v1.0 (COMPANY PROFILE 2026). 문구를 바꿀 땐 소개서와 함께 맞춘다. -->
+    <meta name="description" content="도트랩스(DotLabs Co., Ltd.) - 금융 실시간 시스템 아키텍처 설계 및 시스템 프로그램 개발. Gbus 메시지 버스, procman 프로세스 관리 데몬, signalAX 시세알림 플랫폼">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -25,9 +26,10 @@
             </div>
             <nav>
                 <ul class="nav-links">
-                    <li><a href="#vision">Vision</a></li>
-                    <li><a href="#core-value">Core Value</a></li>
-                    <li><a href="#competencies">Competencies</a></li>
+                    <li><a href="#company">Company</a></li>
+                    <li><a href="#technology">Technology</a></li>
+                    <li><a href="#solution">Solution</a></li>
+                    <li><a href="#direction">Direction</a></li>
                     <li><a href="#contact">Contact Us</a></li>
                 </ul>
             </nav>
@@ -46,95 +48,222 @@
             </div>
             <div class="hero-content">
                 <h1 class="glitch" data-text="Distributed Orchestration">Distributed<br><span>Orchestration</span></h1>
-                <p class="subtitle">Corporate Vision & Core Technical Competencies</p>
-                <a href="#vision" class="cta-button">Discover Our Vision</a>
+                <p class="subtitle">금융 실시간 시스템 아키텍처 설계 및 시스템 프로그램 개발</p>
+                <a href="#company" class="cta-button">About DotLabs</a>
             </div>
         </section>
 
-        <!-- Vision Section -->
-        <section id="vision" class="vision section-padding observer-target">
+        <!-- 01 Company — 소개서 2쪽 -->
+        <section id="company" class="vision philosophy section-padding observer-target">
             <div class="container text-center">
-                <h2 class="section-title">Corporate <span>Vision</span></h2>
+                <h2 class="section-title">About <span>DotLabs</span></h2>
                 <div class="vision-content glass">
-                    <p class="quote">"분산된 금융 시스템을<br>하나의 흐름으로 지휘한다."</p>
+                    <p class="quote">"금융 시스템의 실시간 처리 구조와<br>핵심 프로그램을 설계·구현합니다."</p>
                     <p class="desc">
-                        금융 시스템은 본질적으로 분산되어 있으며,<br>수많은 프로세스와 이벤트가 독립적으로 움직입니다.<br><br>
-                        도트랩스는 이 복잡한 흐름을 단순화하지 않습니다.<br>
-                        대신, 그 자체를 하나의 질서 있는 구조로 재구성합니다.<br><br>
-                        <strong>분산된 요소들을 정밀하게 연결하고 조율함으로써,<br>
-                            전체 시스템이 하나처럼 동작하는 아키텍처를 설계합니다.</strong>
+                        DotLabs는 분산 시스템, 실시간 데이터 처리, 금융 백엔드 아키텍처를 전문으로 하는 기술 기업입니다.<br><br>
+                        시세 수신부터 조건 판단, 프로세스 간 메시지 전달, 상태 저장과 복구까지<br>
+                        금융 업무의 핵심 처리 구간을 직접 개발합니다.<br><br>
+                        <strong>시세알림 플랫폼, 메시징 버스, 프로세스 관리 데몬을 직접 개발합니다.</strong>
                     </p>
                 </div>
             </div>
         </section>
 
-        <!-- Core Value -->
-        <section id="core-value" class="philosophy section-padding observer-target">
+        <!-- 02~03 Core Technology — 소개서 3~5쪽 (Gbus, procman) -->
+        <section id="technology" class="competencies section-padding observer-target">
             <div class="container">
-                <h2 class="section-title text-center">Core <span>Value</span></h2>
-                <div class="subtitle-wrap text-center">
-                    <h3 class="section-subtitle">Distributed Orchestration</h3>
-                </div>
-                <div class="grid grid-3">
-                    <div class="card glass">
-                        <div class="icon">D</div>
-                        <h3>Distributed</h3>
-                        <p>분산은 해결해야 할 문제가 아니라, 시스템의 전제입니다.<br>도트랩스는 물리적으로 분리된 환경을 그대로 수용하면서도 <strong>단절 없는 흐름</strong>을
-                            유지하는 구조를 설계합니다.</p>
-                    </div>
-                    <div class="card glass">
-                        <div class="icon">O</div>
-                        <h3>Orchestration</h3>
-                        <p>복잡성은 제거하는 것이 아니라, 제어되어야 합니다.<br>도트랩스는 개별 시스템의 동작을 넘어 <strong>전체 흐름을 통제</strong> 가능한 구조로
-                            조직합니다.</p>
-                    </div>
-                    <div class="card glass">
-                        <div class="icon">T</div>
-                        <h3>Technology</h3>
-                        <p>기술은 추상화가 아닌 구현의 영역입니다.<br>도트랩스는 운영체제 수준의 메커니즘부터 아키텍처 설계까지 <strong>직접 다루며</strong>, 실제 환경에서
-                            동작하는 시스템을 구축합니다.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
+                <h2 class="section-title text-center">Core <span>Technology</span></h2>
 
-        <!-- Core Competencies -->
-        <section id="competencies" class="competencies section-padding observer-target">
-            <div class="container">
-                <h2 class="section-title text-center">Core Technical <span>Competencies</span></h2>
+                <!-- Gbus -->
+                <div class="subtitle-wrap text-center">
+                    <h3 class="section-subtitle">Gbus — 중계 없는 버스</h3>
+                </div>
+                <div class="vision-content glass text-center">
+                    <p class="desc">
+                        Gbus는 여러 프로세스가 데이터를 공유하고 교환할 수 있도록 Pub/Sub을 지원하는 메시지 버스입니다.<br>
+                        <strong>중앙에서 메시지를 중계하지 않고, 프로세스 사이를 직접 연결합니다.</strong><br>
+                        서버 안팎의 프로세스를 중계 지연 없이 이어야 하는 금융 실시간 시스템을 위해 설계했습니다.
+                    </p>
+                </div>
+
+                <div class="glass mt-4 table-box">
+                    <table class="data-table">
+                        <thead>
+                            <tr><th></th><th>일반적인 메시지 버스</th><th class="hl">Gbus</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><th>연결 방식</th><td>topic 기반 다대다</td><td class="hl">topic 기반 다대다</td></tr>
+                            <tr><th>데이터 경로</th><td>중앙 브로커 경유</td><td class="hl">프로세스 간 직접 전송</td></tr>
+                            <tr><th>버스 장애 시</th><td>전체 통신 중단</td><td class="hl">기존 채널 그대로 유지</td></tr>
+                            <tr><th>중계 지연</th><td>중계 단계만큼 추가</td><td class="hl">없음</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="glass mt-4 table-box">
+                    <table class="data-table">
+                        <thead>
+                            <tr><th>구분</th><th>전송 방식</th><th>용도</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><th>서버 내 IPC</th><td>PUB/SUB</td><td>1:1 · 1:N (Fan-out) · N:1 (Fan-in)</td></tr>
+                            <tr><th rowspan="2">서버 간 TCP</th><td>PUB/SUB</td><td>1:1 · 1:N (Fan-out)</td></tr>
+                            <tr><td>PUSH/PULL</td><td>작업 분배</td></tr>
+                            <tr><th rowspan="2">OS 파이프·큐</th><td>Named Pipe</td><td>1:1 단방향</td></tr>
+                            <tr><td>POSIX / System V MQ</td><td>작업 분배</td></tr>
+                            <tr><th>메모리큐</th><td>queue</td><td>1:1</td></tr>
+                            <tr><th>UDP</th><td>자체 Reliable UDP</td><td>서버 간 고성능 · 신뢰 모드 4종</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="grid grid-4 mt-4">
+                    <div class="feature-card stat-card">
+                        <div class="stat-value">200만+</div>
+                        <div class="feature-kor">메모리큐 · msg/s</div>
+                    </div>
+                    <div class="feature-card stat-card">
+                        <div class="stat-value">170만+</div>
+                        <div class="feature-kor">IPC PUB/SUB · msg/s</div>
+                    </div>
+                    <div class="feature-card stat-card">
+                        <div class="stat-value">170만+</div>
+                        <div class="feature-kor">TCP PUB/SUB · msg/s</div>
+                    </div>
+                    <div class="feature-card stat-card">
+                        <div class="stat-value">100만+</div>
+                        <div class="feature-kor">IPC 1:3 Fan-out · msg/s</div>
+                    </div>
+                </div>
+                <p class="stat-note text-center"><strong>1,000만 건 송수신 유실 0%</strong><br>
+                    256B 메시지 · 단일 topic · 개발 노트북(WSL) 1대에서 측정</p>
+
+                <!-- procman -->
+                <div class="subtitle-wrap text-center block-gap">
+                    <h3 class="section-subtitle">procman — 시간 기반 프로세스 운영 자동화</h3>
+                </div>
+                <p class="section-lead text-center">배치 스케줄링과 상주 프로세스 감시를 하나의 데몬으로 통합했습니다.<br>비정상 종료는 즉시 감지해 다시 띄웁니다.</p>
                 <div class="grid grid-3">
                     <div class="feature-card">
                         <div class="feature-content">
                             <div class="feature-number">①</div>
-                            <h4>Distributed Systems</h4>
-                            <div class="feature-kor">대규모 분산 시스템 설계</div>
+                            <h4>Time Window</h4>
+                            <div class="feature-kor">시간창 운영</div>
                             <div class="feature-text">
-                                <p>분산 환경에서의 일관성은 단순한 동기화로 해결되지 않습니다. 도트랩스는 시스템 전체의 흐름을 기준으로 구조를 설계합니다.</p>
-                                <p>노드, 프로세스, 데이터의 경계를 넘나드는 흐름을 정의하고, 각 구성 요소가 하나의 시스템처럼 동작하도록 조직합니다.</p>
-                                <p>확장은 단순한 자원 증가가 아니라, 구조적으로 성능이 유지되는 방식으로 설계됩니다.</p>
+                                <p>정해진 시간 동안만 프로세스를 유지하고, 창이 닫히면 정리합니다.</p>
+                                <p>자정을 넘기는 야간 작업도 하나의 창으로 다룹니다.</p>
                             </div>
                         </div>
                     </div>
                     <div class="feature-card">
                         <div class="feature-content">
                             <div class="feature-number">②</div>
-                            <h4>Real-Time Processing</h4>
-                            <div class="feature-kor">실시간 데이터 처리</div>
+                            <h4>Time Zone</h4>
+                            <div class="feature-kor">해외 시간대 보정</div>
                             <div class="feature-text">
-                                <p>실시간 시스템은 빠른 것이 아니라, 지연이 예측 가능해야 합니다.</p>
-                                <p>도트랩스는 이벤트 중심의 처리 구조를 기반으로, 데이터 흐름이 중단되지 않는 아키텍처를 설계합니다.</p>
-                                <p>시스템의 상태와 무관하게 일관된 처리 흐름을 유지하는 것을 목표로 합니다.</p>
+                                <p>US·EU 서머타임 기간을 날짜로 계산해 해외 시장 작업의 실행 시각을 자동으로 조정합니다.</p>
                             </div>
                         </div>
                     </div>
                     <div class="feature-card">
                         <div class="feature-content">
                             <div class="feature-number">③</div>
-                            <h4>Financial Backend Architecture</h4>
-                            <div class="feature-kor">금융 백엔드 아키텍처</div>
+                            <h4>Zero-Downtime</h4>
+                            <div class="feature-kor">무중단 데몬 교체</div>
                             <div class="feature-text">
-                                <p>금융 시스템은 높은 수준의 신뢰성과 정합성을 요구합니다. 도트랩스는 특정 기술에 의존하지 않고, 검증된 기술 요소들을 조합하여 구조를 설계합니다.</p>
-                                <p>또한, 시스템 레벨의 접근을 통해 메모리, 프로세스, 데이터 흐름을 직접 제어하며, 추상화된 레이어 아래에서의 성능과 안정성을 확보합니다.</p>
+                                <p>procman을 다시 띄워도 실행 중인 프로세스는 멈추지 않고 그대로 이어받습니다.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 04 Solution — 소개서 6쪽 (signalAX) -->
+        <section id="solution" class="competencies section-padding observer-target">
+            <div class="container">
+                <h2 class="section-title text-center">Solution <span>signalAX</span></h2>
+                <div class="subtitle-wrap text-center">
+                    <h3 class="section-subtitle">고객별 시세 조건을 실시간으로 감시하는 알림 플랫폼</h3>
+                </div>
+                <p class="section-lead text-center">국내주식·미국주식·지수 시세를 받아 고객이 등록한 조건을 평가하고,<br>충족 결과를 기존 모바일 알림 체계로 전달합니다.</p>
+                <div class="grid grid-2">
+                    <div class="feature-card">
+                        <div class="feature-content">
+                            <h4>Features</h4>
+                            <div class="feature-kor">주요 기능</div>
+                            <div class="feature-text">
+                                <p>· 목표가·등락률·신고가·신저가 등 40여 종 감시 조건</p>
+                                <p>· 조건 유효기간 및 알림 상태 관리</p>
+                                <p>· 기존 MTS·시세 수신기·Push 게이트웨이 연계</p>
+                                <p>· 감시·발송 현황과 시스템 상태 통합 관제</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-content">
+                            <h4>Reference</h4>
+                            <div class="feature-kor">NH투자증권 시세알림 시스템</div>
+                            <div class="feature-text">
+                                <p>2026년 3월 구축 완료<br>국내주식 · 미국주식 · 지수 적용</p>
+                            </div>
+                            <div class="grid grid-2 ref-stats">
+                                <div>
+                                    <div class="stat-value">1,000만+</div>
+                                    <p class="stat-label">운영 중 등록 감시 조건</p>
+                                </div>
+                                <div>
+                                    <div class="stat-value">40+</div>
+                                    <p class="stat-label">조건 종류</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 05 Direction — 소개서 7쪽 -->
+        <section id="direction" class="competencies section-padding observer-target">
+            <div class="container">
+                <h2 class="section-title text-center">Our <span>Direction</span></h2>
+                <div class="subtitle-wrap text-center">
+                    <h3 class="section-subtitle">시스템 프로그램 개발 역량을 바탕으로 금융 실시간 처리 영역을 확장합니다</h3>
+                </div>
+                <div class="grid grid-2">
+                    <div class="feature-card">
+                        <div class="feature-content">
+                            <div class="feature-number">01</div>
+                            <h4>Architecture</h4>
+                            <div class="feature-text">
+                                <p>금융 시스템의 처리 구조에 맞춘 아키텍처 설계 및 핵심 프로그램 개발</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-content">
+                            <div class="feature-number">02</div>
+                            <h4>Core Technology</h4>
+                            <div class="feature-text">
+                                <p>메시징·시세 처리·상태 관리 등 공통 기술의 재사용과 고도화</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-content">
+                            <div class="feature-number">03</div>
+                            <h4>signalAX</h4>
+                            <div class="feature-text">
+                                <p>signalAX의 고객사 환경별 연계 및 적용 범위 확대</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-content">
+                            <div class="feature-number">04</div>
+                            <h4>Server-side Order</h4>
+                            <div class="feature-text">
+                                <p>검증된 시세 감시 구조를 확장한 서버자동주문 시스템 설계·구축</p>
                             </div>
                         </div>
                     </div>
@@ -148,7 +277,7 @@
                 <div class="glow-bg"></div>
                 <h2 class="section-title text-center">Contact <span>Us</span></h2>
                 <div class="subtitle-wrap text-center">
-                    <div class="section-subtitle">Get in touch with DotLabs</div>
+                    <div class="section-subtitle">사업·기술 문의</div>
                 </div>
                 <div class="contact-form-wrapper glass">
                     <form action="https://formsubmit.co/a648dcbbf77dc277e24043e4dc03e04c" method="POST"
@@ -157,7 +286,6 @@
                         <input type="hidden" name="_captcha" value="false">
                         <input type="hidden" name="_subject" value="New Inquiry from DotLabs Website">
                         <input type="hidden" name="_template" value="table">
-                        <!-- Removed hardcoded _next redirect to dotlabs.io so it doesn't leave the new site during tests -->
 
                         <div class="form-row">
                             <div class="form-group">
@@ -188,8 +316,8 @@
             <div class="container relative view-border text-center">
                 <div class="glow-bg"></div>
                 <div class="message-box closing-box mt-0">
-                    <span class="closing-brand">도트랩스는</span> 분산 시스템을 단순히 구축하지 않습니다.<br>
-                    <strong>그 흐름 자체를 설계합니다.</strong>
+                    <span class="closing-brand">도트랩스는</span> 시스템 프로그램 개발 역량을 바탕으로<br>
+                    <strong>금융 실시간 처리 영역을 확장합니다.</strong>
                 </div>
             </div>
         </section>
@@ -202,7 +330,7 @@
                 <p>Distributed Orchestration Technology</p>
             </div>
             <div class="footer-contact">
-                <p><a href="https://www.dotlabs.io" target="_blank" rel="noopener">www.dotlabs.io</a></p>
+                <p><a href="https://www.dotlabs.kr">www.dotlabs.kr</a></p>
                 <p>&copy; 2026 DotLabs Co., Ltd. All rights reserved.</p>
             </div>
         </div>
