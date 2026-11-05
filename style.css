@@ -1008,3 +1008,22 @@ html { background-color: var(--bg-dark); }
 /* 상자·로고에 마우스를 올려도 위치가 움직이지 않게 한다(11-05 사용자 지적). 테두리 빛만 남긴다 */
 .glass:hover,
 .logo-link:hover { transform: none; }
+
+/*
+ * 메뉴마다 제목 높이 통일 (2026-11-05)
+ * 내용을 세로 가운데에 두면 내용 길이에 따라 제목 위치가 116~238px 로 달라져
+ * 메뉴를 바꿀 때마다 화면이 출렁였다. 모든 화면을 위에서부터 같은 간격으로 시작한다.
+ */
+.views-on main > section.section-padding.is-active {
+    justify-content: flex-start;
+    padding-top: calc(var(--header-h, 95px) + clamp(1.5rem, 6vh, 4rem));
+}
+/* Contact 는 제목이 테두리 상자 안에 있어 상자 위 여백만큼 제목이 내려간다 → 상자 위쪽 여백을 줄여 맞춘다 */
+.views-on #contact .view-border { padding-top: 0.5rem; }
+
+/* 첫 화면 → 다른 화면으로 갈 때 헤더 경계선이 흰색에서 시작해 잠깐 흰 줄이 보였다.
+ * 경계선을 항상 투명으로 깔아 두고 색만 바뀌게 한다. */
+header { border-bottom: 1px solid transparent; }
+
+/* 스크롤바가 생기고 없어질 때 화면 폭이 바뀌어 가운데가 흔들리지 않게 자리를 늘 잡아 둔다 */
+html { scrollbar-gutter: stable; }

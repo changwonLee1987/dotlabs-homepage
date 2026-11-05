@@ -47,7 +47,8 @@ document.addEventListener('DOMContentLoaded', () => {
         // 화면 높이와 푸터 높이: 각 화면 = (보이는 높이 - 푸터) 로 잡아 푸터까지 한 화면에 든다.
         // iPad·iPhone Safari 는 100vh 가 주소창 높이를 빼지 않아 innerHeight 를 쓴다.
         root.style.setProperty('--app-h', window.innerHeight + 'px');
-        if (footer) root.style.setProperty('--footer-h', footer.offsetHeight + 'px');
+        // offsetHeight 는 반올림이라 1px 모자라 스크롤바가 생겼다 → 실제 높이를 올림
+        if (footer) root.style.setProperty('--footer-h', Math.ceil(footer.getBoundingClientRect().height) + 'px');
     };
 
     const showView = (id) => {
@@ -86,7 +87,7 @@ document.addEventListener('DOMContentLoaded', () => {
         box.style.zoom = '';
         if (window.innerWidth <= 768) return;
         const cs = getComputedStyle(v);
-        const footerH = footer ? footer.offsetHeight : 0;
+        const footerH = footer ? Math.ceil(footer.getBoundingClientRect().height) : 0;
         const avail = window.innerHeight - footerH - parseFloat(cs.paddingTop) - parseFloat(cs.paddingBottom);
         const need = box.offsetHeight;
         if (need > avail) box.style.zoom = Math.max(MIN_ZOOM, avail / need).toFixed(3);
