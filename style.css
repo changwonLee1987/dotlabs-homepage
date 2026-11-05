@@ -780,7 +780,7 @@ nav a.active {
  * 스크립트가 안 돌면 이 블록은 아무 일도 하지 않아 예전 한 페이지 그대로다.
  * 각 화면은 "헤더 아래 남은 높이" 안에 내용을 세로 가운데로 놓는다.
  * 내용이 그보다 길면(Core Technology) 그 화면 안에서만 아래로 스크롤된다.
- * --header-h 는 script.js 가 고정 헤더 높이를 재서 넣는다(기본 220px).
+ * --header-h 는 script.js 가 고정 헤더 높이를 재서 넣는다(기본 80px).
  */
 .views-on main > section:not(.is-active) { display: none; }
 
@@ -789,7 +789,7 @@ nav a.active {
     flex-direction: column;
     justify-content: center;
     min-height: 100vh;
-    padding: calc(var(--header-h, 220px) + 1rem) 0 3rem;
+    padding: calc(var(--header-h, 80px) + 1.5rem) 0 2.5rem;
 }
 .views-on main > section.section-padding > .container { width: 100%; }
 
@@ -800,7 +800,7 @@ nav a.active {
 .views-on .block-gap { margin-top: 4rem; }
 
 /* Technology: Gbus 설명+비교표 | 전송방식표 를 좌우로 */
-.tech-split { grid-template-columns: 1fr 1.2fr; gap: 2rem; align-items: start; }
+.tech-split { grid-template-columns: 1fr 1.2fr; gap: 2rem; align-items: stretch; }
 /* 좁아진 칸에서 한글이 음절 중간에 끊기지 않게 */
 .tech-desc .desc,
 .direction-grid .feature-text p { word-break: keep-all; }
@@ -829,12 +829,26 @@ nav a.active {
 .views-on .contact-form .submit-btn { margin-top: 0; }
 
 /*
- * 노트북처럼 세로가 낮은 화면(높이 820px 이하)에서는 로고 180px 헤더가 화면의
- * 1/3 을 차지해 한 화면 배치가 깨진다. 이때만 로고를 줄인다. 큰 화면은 그대로.
+ * 헤더 높이 줄이기 (2026-11-05)
+ * 예전 로고(영문 CI.png)는 1024x1024 정사각형인데 글자는 가운데 띠(약 800x210)에만 있어,
+ * 180px 로 띄우면 헤더가 225px 이 됐다. 위아래 여백을 잘라낸 ci-wordmark.png 를
+ * 44px 로 띄우면 화면에 보이는 글자 크기는 예전과 거의 같고 헤더는 약 80px 이 된다.
  */
-@media (max-height: 820px) {
-    .logo-img { height: 110px; }
-    header { padding: 0.75rem 0; }
+header { padding: 1rem 0; }
+header.scrolled { padding: 0.6rem 0; }
+.logo-img { height: 44px; }
+.hero { padding-top: 80px; }
+nav a { white-space: nowrap; }
+
+/* 첫 화면(배경 그림)이 아닌 화면에서는 헤더 바탕을 채워, 아래로 넘긴 내용이 메뉴 뒤로 비치지 않게 한다 */
+.views-on:not(.at-hero) header {
+    background: var(--bg-dark);
+    border-bottom: 1px solid var(--glass-border);
+}
+
+@media (max-width: 1100px) {
+    nav ul { gap: 1.6rem; }
+    nav a { font-size: 0.85rem; }
 }
 
 @media (max-width: 992px) {
@@ -863,16 +877,16 @@ nav a.active {
 @media (max-width: 768px) {
     header { padding: 0.5rem 0; }
     header.scrolled { padding: 0.25rem 0; }
-    .logo-img { height: 100px; }
+    .logo-img { height: 36px; }
     .nav-container { padding: 0 1rem; }
     .container { padding: 0 1rem; }
 
     body { word-break: keep-all; }
     .views-on main > section.section-padding.is-active {
         justify-content: flex-start;
-        padding: calc(var(--header-h, 100px) + 1rem) 0 2.5rem;
+        padding: calc(var(--header-h, 60px) + 1rem) 0 2.5rem;
     }
-    .hero { padding-top: 100px; }
+    .hero { padding-top: 60px; }
     .subtitle { font-size: 1.05rem; }
 
     .section-title { font-size: 1.9rem; }
@@ -893,4 +907,56 @@ nav a.active {
 
     /* 모바일 메뉴 화면에서 지금 보는 메뉴를 표시 */
     nav a.active { color: var(--accent-blue); }
+}
+
+/* Technology 안 Gbus / procman 전환 버튼 (스크립트가 돌 때만 나눠 보인다) */
+.tech-tabs { display: none; }
+.views-on .tech-tabs { display: flex; justify-content: center; gap: 0.75rem; margin: -1rem 0 2rem; }
+.tech-tab {
+    font: inherit;
+    font-size: 0.9rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    padding: 0.5rem 1.4rem;
+    border-radius: 50px;
+    border: 1px solid rgba(0, 229, 255, 0.25);
+    background: transparent;
+    color: var(--text-muted);
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+.tech-tab:hover { color: var(--accent-blue); }
+.tech-tab.is-on { background: rgba(0, 229, 255, 0.1); color: var(--accent-blue); border-color: var(--accent-blue); }
+.views-on .tech-part:not(.is-on) { display: none; }
+
+/* 큰 수치가 "1,000/만+" 로 끊기지 않게 */
+.stat-value { white-space: nowrap; }
+@media (max-width: 992px) {
+    .ref-stats .stat-value { font-size: 1.8rem; }
+}
+
+/* Technology 세로 길이 줄이기: 설명은 표 위 한 폭, 표 두 개는 좌우, 수치 카드는 낮게 */
+.tech-lead { margin-bottom: 1.5rem; word-break: keep-all; }
+.tech-lead strong { color: #fff; }
+.tech-part .stat-card { padding: 1.25rem 1rem; }
+.tech-part .stat-value { font-size: 2rem; }
+.tech-part .stat-note { margin-top: 1rem; }
+@media (min-width: 769px) and (max-width: 992px) {
+    /* 태블릿 세로: 표 두 개와 수치 네 개를 PC 처럼 한 줄에 둔다 */
+    .tech-split { grid-template-columns: 1fr 1.2fr; }
+    .tech-split .data-table td { white-space: normal; }
+    .tech-part .stat-value { font-size: 1.6rem; }
+    .tech-split .data-table { font-size: 0.9rem; }
+}
+
+/* 왼쪽 칸: 비교표 + 수치 2x2 */
+.tech-col { display: flex; flex-direction: column; gap: 1rem; }
+.tech-col .mt-4 { margin-top: 0; }
+.stat-grid { gap: 1rem; }
+.tech-split .data-table th,
+.tech-split .data-table td { padding: 0.55rem 0.9rem; }
+.tech-split .table-box { padding: 1.1rem 1.5rem; }
+@media (max-width: 768px) {
+    .stat-grid { grid-template-columns: 1fr 1fr; gap: 0.75rem; }
+    .tech-part .stat-value { font-size: 1.5rem; }
 }

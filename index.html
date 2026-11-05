@@ -12,7 +12,8 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <!-- ?v= 는 캐시 무효화용. CSS/JS 를 바꾸면 날짜-번호를 올린다(아이패드가 옛 파일을 들고 있던 일, 2026-11-05) -->
+    <link rel="stylesheet" href="style.css?v=20261105-5">
 </head>
 
 <body>
@@ -21,7 +22,7 @@
         <div class="nav-container">
             <div class="logo">
                 <a href="#hero" class="logo-link">
-                    <img src="영문 CI.png" alt="DotLabs" class="logo-img">
+                    <img src="ci-wordmark.png" alt="DotLabs" class="logo-img">
                 </a>
             </div>
             <nav>
@@ -74,21 +75,25 @@
             <div class="container">
                 <h2 class="section-title text-center">Core <span>Technology</span></h2>
 
+                <!-- 한 화면에 담기 위해 Gbus / procman 을 버튼으로 나눠 보인다(script.js). 스크립트가 없으면 둘 다 보인다 -->
+                <div class="tech-tabs" role="tablist">
+                    <button type="button" class="tech-tab is-on" role="tab" aria-selected="true" data-part="gbus">Gbus</button>
+                    <button type="button" class="tech-tab" role="tab" aria-selected="false" data-part="procman">procman</button>
+                </div>
+                <div class="tech-part is-on" data-part="gbus">
                 <!-- Gbus -->
                 <div class="subtitle-wrap text-center">
                     <h3 class="section-subtitle">Gbus — Brokerless Message Bus</h3>
                 </div>
+                <!-- 설명은 표 위에 한 폭으로(세 줄) 둬서 세로 길이를 줄인다 -->
+                <p class="section-lead text-center tech-lead">
+                    Gbus는 여러 프로세스가 데이터를 공유하고 교환할 수 있도록 Pub/Sub을 지원하는 메시지 버스입니다.<br>
+                    <strong>중앙에서 메시지를 중계하지 않고 프로세스 사이를 직접 연결합니다.</strong><br>
+                    서버 안팎의 프로세스를 중계 지연 없이 이어야 하는 금융 실시간 시스템에 맞춰 설계했습니다.
+                </p>
                 <div class="grid tech-split">
                     <div class="tech-col">
-                <div class="vision-content glass text-center tech-desc">
-                    <p class="desc">
-                        Gbus는 여러 프로세스가 데이터를 공유하고 교환할 수 있도록 Pub/Sub을 지원하는 메시지 버스입니다.<br>
-                        <strong>중앙에서 메시지를 중계하지 않고 프로세스 사이를 직접 연결합니다.</strong><br>
-                        서버 안팎의 프로세스를 중계 지연 없이 이어야 하는 금융 실시간 시스템에 맞춰 설계했습니다.
-                    </p>
-                </div>
-
-                <div class="glass mt-4 table-box">
+                <div class="glass table-box">
                     <table class="data-table">
                         <thead>
                             <tr><th></th><th>일반적인 메시지 버스</th><th class="hl">Gbus</th></tr>
@@ -102,6 +107,25 @@
                     </table>
                 </div>
 
+                <!-- 수치 카드는 비교표 아래(왼쪽 칸)에 둬서 오른쪽 전송방식표와 높이를 맞춘다 -->
+                <div class="grid grid-2 stat-grid">
+                    <div class="feature-card stat-card">
+                        <div class="stat-value">200만+</div>
+                        <div class="feature-kor">메모리큐 · msg/s</div>
+                    </div>
+                    <div class="feature-card stat-card">
+                        <div class="stat-value">170만+</div>
+                        <div class="feature-kor">IPC PUB/SUB · msg/s</div>
+                    </div>
+                    <div class="feature-card stat-card">
+                        <div class="stat-value">170만+</div>
+                        <div class="feature-kor">TCP PUB/SUB · msg/s</div>
+                    </div>
+                    <div class="feature-card stat-card">
+                        <div class="stat-value">100만+</div>
+                        <div class="feature-kor">IPC 1:3 Fan-out · msg/s</div>
+                    </div>
+                </div>
                     </div>
                     <div class="tech-col">
                 <div class="glass table-box">
@@ -123,29 +147,13 @@
                     </div>
                 </div>
 
-                <div class="grid grid-4 mt-4">
-                    <div class="feature-card stat-card">
-                        <div class="stat-value">200만+</div>
-                        <div class="feature-kor">메모리큐 · msg/s</div>
-                    </div>
-                    <div class="feature-card stat-card">
-                        <div class="stat-value">170만+</div>
-                        <div class="feature-kor">IPC PUB/SUB · msg/s</div>
-                    </div>
-                    <div class="feature-card stat-card">
-                        <div class="stat-value">170만+</div>
-                        <div class="feature-kor">TCP PUB/SUB · msg/s</div>
-                    </div>
-                    <div class="feature-card stat-card">
-                        <div class="stat-value">100만+</div>
-                        <div class="feature-kor">IPC 1:3 Fan-out · msg/s</div>
-                    </div>
-                </div>
                 <p class="stat-note text-center"><strong>1,000만 건 송수신 유실 0%</strong><br>
                     256B 메시지 · 단일 topic · 개발 노트북(WSL) 1대에서 측정</p>
 
+                </div>
+                <div class="tech-part" data-part="procman">
                 <!-- procman -->
-                <div class="subtitle-wrap text-center block-gap">
+                <div class="subtitle-wrap text-center">
                     <h3 class="section-subtitle">procman — 시간 기반 프로세스 운영 자동화</h3>
                 </div>
                 <p class="section-lead text-center">배치 스케줄링과 상주 프로세스 감시를 하나의 데몬으로 통합했습니다.<br>비정상 종료는 즉시 감지해 다시 띄웁니다.</p>
@@ -181,6 +189,7 @@
                             </div>
                         </div>
                     </div>
+                </div>
                 </div>
             </div>
         </section>
@@ -336,7 +345,7 @@
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    <script src="script.js?v=20261105-5"></script>
 </body>
 
 </html>

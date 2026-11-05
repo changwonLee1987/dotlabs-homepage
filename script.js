@@ -54,14 +54,51 @@ document.addEventListener('DOMContentLoaded', () => {
             v.classList.remove('visible');
             if (on) { void v.offsetWidth; v.classList.add('visible'); }
         });
+        // 첫 화면에서만 헤더를 투명하게 둔다(배경 그림 위). 나머지 화면은 CSS 가 바탕을 채운다
+        root.classList.toggle('at-hero', target.id === DEFAULT_VIEW);
         navLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + target.id));
         // html 의 smooth 스크롤을 타지 않도록 즉시 맨 위로
         window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+        fitView();
         if (nav && nav.classList.contains('active')) {
             nav.classList.remove('active');
             if (hamburger) hamburger.classList.remove('active');
         }
     };
+
+    /*
+     * 화면 맞춤: 내용이 헤더 아래 남은 높이보다 길면 그 화면의 .container 를 zoom 으로
+     * 줄여 한 화면에 담는다. 0.7 배 아래로는 줄이지 않는다(글자가 너무 작아짐) —
+     * 그보다 길면 그 화면만 아래로 스크롤된다. 휴대폰(폭 768px 이하)은 줄이지 않고
+     * 세로 스크롤로 읽는다. zoom 은 Safari·Chrome·Firefox(126+) 모두 지원한다.
+     */
+    const MIN_ZOOM = 0.7;
+    const fitView = () => {
+        const v = views.find(x => x.classList.contains('is-active'));
+        if (!v || !v.classList.contains('section-padding')) return;
+        const box = v.querySelector(':scope > .container');
+        if (!box) return;
+        box.style.zoom = '';
+        if (window.innerWidth <= 768) return;
+        const cs = getComputedStyle(v);
+        const avail = window.innerHeight - parseFloat(cs.paddingTop) - parseFloat(cs.paddingBottom);
+        const need = box.offsetHeight;
+        if (need > avail) box.style.zoom = Math.max(MIN_ZOOM, avail / need).toFixed(3);
+    };
+
+    // Technology 안의 Gbus / procman 전환
+    const techTabs = document.querySelectorAll('.tech-tab');
+    techTabs.forEach(btn => btn.addEventListener('click', () => {
+        const part = btn.dataset.part;
+        techTabs.forEach(b => {
+            const on = b === btn;
+            b.classList.toggle('is-on', on);
+            b.setAttribute('aria-selected', on ? 'true' : 'false');
+        });
+        document.querySelectorAll('.tech-part').forEach(el => el.classList.toggle('is-on', el.dataset.part === part));
+        window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+        fitView();
+    }));
 
     const currentId = () => decodeURIComponent(location.hash.replace(/^#/, ''));
 
@@ -78,7 +115,10 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     window.addEventListener('hashchange', () => showView(currentId()));
-    window.addEventListener('resize', setHeaderHeight);
+    window.addEventListener('resize', () => { setHeaderHeight(); fitView(); });
+    // 웹폰트가 늦게 오면 글자 폭·높이가 바뀌므로 한 번 더 맞춘다
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(fitView);
+    window.addEventListener('load', fitView);
 
     setHeaderHeight();
     root.classList.add('views-on');
