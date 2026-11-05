@@ -963,3 +963,27 @@ nav a { white-space: nowrap; }
 
 /* 한글이 음절 중간("기/업입니다", "다/대다")에서 끊기지 않게 — 모든 화면 폭에 적용 */
 body { word-break: keep-all; overflow-wrap: anywhere; }
+
+/*
+ * 푸터까지 한 화면에 (2026-11-05)
+ * 각 화면 높이를 "보이는 높이 - 푸터 높이"로 잡고, 푸터는 한 줄로 얇게 한다.
+ * 푸터 배경은 원래 본문보다 한 단계 어두운 --bg-darker 였는데, 화면 안에 붙으면서
+ * 띠처럼 보여 본문과 같은 --bg-dark 로 맞추고 위 경계선만 남긴다.
+ */
+.views-on main > section.section-padding.is-active,
+.views-on main > section.hero.is-active {
+    min-height: calc(var(--app-h, 100vh) - var(--footer-h, 56px));
+}
+.views-on .hero { height: calc(var(--app-h, 100vh) - var(--footer-h, 56px)); }
+.views-on .footer { background: var(--bg-dark); padding: 0.9rem 0; }
+.views-on .flex-footer { flex-direction: row; gap: 1rem; }
+.views-on .footer-logo { display: flex; align-items: baseline; gap: 0.75rem; flex-wrap: wrap; }
+.views-on .footer .brand { display: inline; font-size: 1.05rem; margin: 0; }
+.views-on .footer-logo p,
+.views-on .footer-contact p { font-size: 0.8rem; }
+.views-on .footer-contact { display: flex; gap: 1rem; flex-wrap: wrap; justify-content: flex-end; text-align: right; }
+@media (max-width: 768px) {
+    .views-on .flex-footer { flex-direction: column; gap: 0.25rem; text-align: center; }
+    .views-on .footer-logo,
+    .views-on .footer-contact { justify-content: center; text-align: center; }
+}

@@ -39,10 +39,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 고정 헤더 높이만큼 각 화면 위를 비워 둔다. 로고 크기가 화면 폭마다 달라
     // 숫자로 박지 않고 잰다. 스크롤 축소(.scrolled) 전 높이를 기준으로 한다.
+    const footer = document.querySelector('.footer');
     const setHeaderHeight = () => {
         if (!header.classList.contains('scrolled')) {
             root.style.setProperty('--header-h', header.offsetHeight + 'px');
         }
+        // 화면 높이와 푸터 높이: 각 화면 = (보이는 높이 - 푸터) 로 잡아 푸터까지 한 화면에 든다.
+        // iPad·iPhone Safari 는 100vh 가 주소창 높이를 빼지 않아 innerHeight 를 쓴다.
+        root.style.setProperty('--app-h', window.innerHeight + 'px');
+        if (footer) root.style.setProperty('--footer-h', footer.offsetHeight + 'px');
     };
 
     const showView = (id) => {
@@ -81,7 +86,8 @@ document.addEventListener('DOMContentLoaded', () => {
         box.style.zoom = '';
         if (window.innerWidth <= 768) return;
         const cs = getComputedStyle(v);
-        const avail = window.innerHeight - parseFloat(cs.paddingTop) - parseFloat(cs.paddingBottom);
+        const footerH = footer ? footer.offsetHeight : 0;
+        const avail = window.innerHeight - footerH - parseFloat(cs.paddingTop) - parseFloat(cs.paddingBottom);
         const need = box.offsetHeight;
         if (need > avail) box.style.zoom = Math.max(MIN_ZOOM, avail / need).toFixed(3);
     };
@@ -120,7 +126,8 @@ document.addEventListener('DOMContentLoaded', () => {
     if (document.fonts && document.fonts.ready) document.fonts.ready.then(fitView);
     window.addEventListener('load', fitView);
 
-    setHeaderHeight();
+    // views-on 을 먼저 붙여야 얇아진 푸터 높이를 잰다(순서를 바꾸면 예전 푸터 165px 로 잡힌다)
     root.classList.add('views-on');
+    setHeaderHeight();
     showView(currentId());
 });
