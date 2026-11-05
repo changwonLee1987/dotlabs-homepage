@@ -88,6 +88,8 @@ document.addEventListener('DOMContentLoaded', () => {
         box.style.width = '';
         box.style.maxWidth = '';
         if (window.innerWidth <= 768) return;
+        // Gbus 는 줄이지 않는다: 글자를 procman 과 같은 크기로 두고 넘치면 스크롤(11-05 사용자 결정)
+        if (v.id === 'technology' && v.querySelector('.tech-part.is-on[data-part="gbus"]')) return;
         const cs = getComputedStyle(v);
         const footerH = footer ? Math.ceil(footer.getBoundingClientRect().height) : 0;
         // 4px 여유: zoom 소수점 반올림·서브픽셀 때문에 1~2px 넘쳐 스크롤이 생겼다(Contact, 1180x790 에서 2px)

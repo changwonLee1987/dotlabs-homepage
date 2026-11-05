@@ -13,7 +13,7 @@
         href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap"
         rel="stylesheet">
     <!-- ?v= 는 캐시 무효화용. CSS/JS 를 바꾸면 날짜-번호를 올린다(아이패드가 옛 파일을 들고 있던 일, 2026-11-05) -->
-    <link rel="stylesheet" href="style.css?v=20261105-16">
+    <link rel="stylesheet" href="style.css?v=20261105-17">
 </head>
 
 <body>
@@ -93,8 +93,8 @@
                 </p>
                 <!--
                   표·수치 배치는 CSS grid-area 로 화면 폭마다 바꾼다(style.css "Technology 배치").
-                    넓은 화면(1100px+): 비교표 | 전송방식표 | 수치(세로)  — 아이패드 가로까지 한 화면
-                    태블릿: 비교표+수치 | 전송방식표 / 휴대폰: 위에서 아래로
+                    태블릿·PC: 비교표+수치 | 전송방식표 / 휴대폰: 위에서 아래로
+                    Gbus 는 화면 맞춤(축소)을 하지 않는다 — 글자를 procman 과 같은 크기로 두고 필요하면 스크롤
                 -->
                 <div class="grid tech-split">
                     <div class="tech-cmp">
@@ -104,7 +104,7 @@
                                 <tr><th></th><th>일반적인 메시지 버스</th><th class="hl">Gbus</th></tr>
                             </thead>
                             <tbody>
-                                <tr><th>연결 방식</th><td>topic 기반 다대다</td><td class="hl">topic 기반 다대다</td></tr>
+                                <tr><th>연결 방식</th><td>topic 기반 1:1 · 1:N · N:1</td><td class="hl">topic 기반 1:1 · 1:N · N:1</td></tr>
                                 <tr><th>데이터 경로</th><td>중앙 브로커 경유</td><td class="hl">프로세스 간 직접 전송</td></tr>
                                 <tr><th>버스 장애 시</th><td>전체 통신 중단</td><td class="hl">기존 채널 그대로 유지</td></tr>
                                 <tr><th>중계 지연</th><td>중계 단계만큼 추가</td><td class="hl">없음</td></tr>
@@ -349,7 +349,7 @@
         </div>
     </footer>
 
-    <script src="script.js?v=20261105-16"></script>
+    <script src="script.js?v=20261105-17"></script>
 </body>
 
 </html>
