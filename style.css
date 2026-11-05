@@ -836,8 +836,8 @@ nav a.active {
  */
 header { padding: 0.6rem 0; }
 header.scrolled { padding: 0.4rem 0; }
-/* 로고는 헤더 높이에 맞춰 크게(11-05 사용자: "너무 작게 보여"). 44px → 64px, 헤더는 위아래 여백을 줄여 약 90px 유지 */
-.logo-img { height: 64px; }
+/* 로고 크기: 44px 은 "너무 작다", 64px 은 "너무 크다"(11-05 사용자) → 그 사이 52px */
+.logo-img { height: 52px; }
 .logo-link { padding: 0.2rem 0; }
 .hero { padding-top: 80px; }
 nav a { white-space: nowrap; }
@@ -855,7 +855,7 @@ nav a { white-space: nowrap; }
 .nav-container { gap: 1.5rem; }
 /* 태블릿 세로(폭 ~820px): 로고와 메뉴가 맞닿지 않게 로고만 조금 줄인다 */
 @media (min-width: 769px) and (max-width: 900px) {
-    .logo-img { height: 54px; }
+    .logo-img { height: 46px; }
     nav ul { gap: 1.2rem; }
 }
 
@@ -885,7 +885,7 @@ nav a { white-space: nowrap; }
 @media (max-width: 768px) {
     header { padding: 0.4rem 0; }
     header.scrolled { padding: 0.25rem 0; }
-    .logo-img { height: 46px; }
+    .logo-img { height: 40px; }
     .nav-container { padding: 0 1rem; }
     .container { padding: 0 1rem; }
 
