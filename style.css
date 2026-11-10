@@ -803,7 +803,7 @@ nav a.active {
 .tech-split { grid-template-columns: 1fr 1.2fr; gap: 2rem; align-items: stretch; }
 /* 좁아진 칸에서 한글이 음절 중간에 끊기지 않게 */
 .tech-desc .desc,
-.direction-grid .feature-text p { word-break: keep-all; }
+.consult-grid .feature-text p { word-break: keep-all; }
 .tech-split .data-table td,
 .tech-split .data-table thead th { white-space: nowrap; }
 /* 용도 칸만 길어서 넘치므로 이 칸만 줄바꿈 허용 */
@@ -814,11 +814,28 @@ nav a.active {
 .tech-split .data-table th,
 .tech-split .data-table td { padding: 0.7rem 0.9rem; }
 
-/* Direction: 네 항목을 한 줄로, 맺음말은 그 아래 */
-.direction-grid .feature-card { padding: 2rem; }
-.closing-band { margin-top: 2.5rem; padding: 2.5rem; }
-.closing-band .closing-box { font-size: 1.6rem; }
-.closing-band .closing-box strong { font-size: 2.2rem; margin-top: 0.5rem; }
+/* Consulting(소개서 v1.6 6쪽): 컨설팅 | SI 두 칸. 예전 Direction 4칸 + 맺음말 자리(2026-11-10 교체) */
+.consult-grid .feature-card { padding: 2rem; }
+
+/*
+ * Company 의 FOUNDED / CEO / BUSINESS (소개서 v1.6 2쪽 오른쪽 상자)
+ * 설명문 아래 얇은 선으로 나눠 3칸. 휴대폰(768px 이하)은 1칸으로 쌓는다.
+ * BUSINESS 만 세 줄이라 칸 위쪽에 맞춘다(가운데 맞춤이면 라벨 높이가 칸마다 달라 보인다).
+ */
+.company-facts {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-top: 2rem;
+    padding-top: 1.75rem;
+    border-top: 1px solid var(--glass-border);
+    align-items: start;
+}
+.fact-label { color: var(--accent-blue); font-size: 0.8rem; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 0.5rem; }
+.fact-value { color: var(--text-muted); font-size: 1rem; line-height: 1.7; word-break: keep-all; }
+.fact-value strong { color: #fff; font-weight: 600; }
+@media (max-width: 768px) {
+    .company-facts { grid-template-columns: 1fr; gap: 1rem; margin-top: 1.25rem; padding-top: 1.25rem; }
+}
 
 /* Contact: 입력란 여백을 줄여 버튼까지 한 화면에 */
 .views-on #contact .view-border { padding: 2.5rem; }
@@ -862,14 +879,9 @@ nav a { white-space: nowrap; }
 @media (max-width: 992px) {
     .tech-split { grid-template-columns: 1fr; }
     .tech-split .data-table td { white-space: normal; }
-    .direction-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
 @media (max-width: 768px) {
-    .direction-grid { grid-template-columns: 1fr; }
-    .closing-band { padding: 2rem 1.25rem; }
-    .closing-band .closing-box { font-size: 1.2rem; }
-    .closing-band .closing-box strong { font-size: 1.6rem; }
     .views-on #contact .view-border { padding: 1.5rem; }
     .views-on .contact-form-wrapper { padding: 1.5rem; }
 }
@@ -907,11 +919,10 @@ nav a { white-space: nowrap; }
     .vision .quote { font-size: 1.45rem; margin-bottom: 1.25rem; }
     .vision .desc { font-size: 0.98rem; line-height: 1.75; }
     .feature-card { padding: 1.5rem 1.25rem; }
-    .direction-grid .feature-card { padding: 1.5rem 1.25rem; }
+    .consult-grid .feature-card { padding: 1.5rem 1.25rem; }
     .feature-kor { margin-bottom: 1rem; padding-bottom: 0.75rem; }
     .grid { gap: 1rem; }
     .tech-desc { padding: 1.5rem 1.25rem; }
-    .closing-band { margin-top: 1.5rem; }
 
     /* 모바일 메뉴 화면에서 지금 보는 메뉴를 표시 */
     nav a.active { color: var(--accent-blue); }
@@ -1116,3 +1127,6 @@ html { scrollbar-gutter: stable; }
     .tech-cmp .data-table td,
     .tech-cmp .data-table th { vertical-align: middle; }
 }
+
+/* 줄바꿈 금지 덩어리 — 표 안 "1:1 · 1:N · N:1 · N:N" 처럼 가운뎃점 앞에서 끊기면 안 되는 표기 */
+.nw { white-space: nowrap; }
