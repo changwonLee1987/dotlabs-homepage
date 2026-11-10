@@ -13,7 +13,7 @@
         href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap"
         rel="stylesheet">
     <!-- ?v= 는 캐시 무효화용. CSS/JS 를 바꾸면 날짜-번호를 올린다(아이패드가 옛 파일을 들고 있던 일, 2026-11-05) -->
-    <link rel="stylesheet" href="style.css?v=20261110-1">
+    <link rel="stylesheet" href="style.css?v=20261110-2">
 </head>
 
 <body>
@@ -183,7 +183,9 @@
                                 <tr><td>PUSH/PULL</td><td>작업 분배</td></tr>
                                 <tr><th rowspan="2">OS 파이프·큐</th><td>Named Pipe</td><td>1:1 단방향</td></tr>
                                 <tr><td>POSIX / System V MQ</td><td>작업 분배</td></tr>
-                                <tr><th>메모리큐</th><td>queue</td><td>1:1</td></tr>
+                                <!-- 메모리큐 = gbus MMQUE(mmap CAS MPMC ring). producer N · consumer M 이 붙고 메시지 하나는 consumer 1개가 받는다
+                                     (gbus/CLAUDE.md "MMQUE 구현 특성", 부하시험 gbus_rush_nn TC-30~32). 2026-11-10 1:1 → N:N -->
+                                <tr><th>메모리큐</th><td>queue</td><td>N:N (작업 분배)</td></tr>
                                 <tr><th>UDP</th><td>자체 Reliable UDP</td><td>서버 간 고성능 · 신뢰 모드 4종</td></tr>
                             </tbody>
                         </table>
@@ -347,7 +349,7 @@
         </div>
     </footer>
 
-    <script src="script.js?v=20261110-1"></script>
+    <script src="script.js?v=20261110-2"></script>
 </body>
 
 </html>
